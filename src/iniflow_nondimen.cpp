@@ -11,13 +11,17 @@ void InitFlowNonDimensional(int id2, int jd2, double Re_inf, double Machinf, dou
         std::cout<<"solving Euler equations in Non-dimensional form"<<std::endl;
         //std::cout<<"I am  here in initialization"<<std::endl;
         //rhoinf = 1.0, tinf=1.0, qinf = 1.0;
-        rhoinf  = 1.0, tinf=1.0/1.4, qinf = Machinf;
         Rgas    = 1.0;
+        rhoinf  = 1.4;
+        pinf    = 1.0;
+        tinf    = 1.0/1.4;
+        qinf    = Machinf;
         Cp      = 1.0/((Gamma-1.0)*Machinf*Machinf);
-        pinf    = rhoinf*Rgas*tinf;
         alpha   = alpha/rad;
         uinf    = qinf*cos(alpha);
         vinf    = qinf*sin(alpha);
+
+        std::cout<<"rhoinf="<<rhoinf<<"\t"<<"pinf="<<pinf<<"\t"<<"uinf="<<uinf<<"\t"<<"vinf="<<vinf<<std::endl;
     }
     else if(eqn_type==1){
         std::cout<<"solving Navier-Stokes equations in Non-dimensional form"<<std::endl;
@@ -59,8 +63,14 @@ void InitFlowNonDimensional(int id2, int jd2, double Re_inf, double Machinf, dou
     for (int j = 0; j <= jd2; j++) {
         for (int i = 0; i <= id2; i++) {
             dv[0][i][j] = rhoinf; //rho
-            dv[1][i][j] = uinf; //u
-            dv[2][i][j] = vinf; //v
+            if(flow_type==1){
+                dv[1][i][j] = uinf; //u
+                dv[2][i][j] = vinf; //v
+            }
+            else{
+                dv[1][i][j] = uinf; //u
+                dv[2][i][j] = vinf; //v
+            }
             dv[3][i][j] = pinf; //p
             dv[4][i][j] = tinf; //T
             dv[5][i][j] = sqrt(Gamma*pinf/rhoinf); //a

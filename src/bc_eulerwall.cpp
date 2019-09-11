@@ -33,8 +33,10 @@ void BC_Eulerwall(int bind, int bnode, int sbind, int ebind, double ***&cv, doub
             if ((rho <= 0) or (rhoe <= 0) or ((fabs(cv[0][i][dum1]) - rho) > maxwchg * cv[0][i][dum1])
                 or ((fabs(cv[3][i][dum1]) - rhoe) > maxwchg * cv[3][i][dum1])) {*/
             dv[0][i][dum1] = dv[0][i][ins1];
+            // dv[0][i][dum1] = (2.0*dv[3][i][ins1] - dv[0][i][ins2]);
             dv[1][i][dum1] = dv[1][i][ins1];
             dv[2][i][dum1] = -dv[2][i][ins1];
+            // dv[3][i][dum1] = 0.5*(3.0*dv[3][i][ins1] - dv[3][i][ins2]);
             dv[3][i][dum1] = dv[3][i][ins1];
             dv[4][i][dum1] = dv[3][i][dum1] / (dv[0][i][dum1] * Rgas);                      //temp
             dv[5][i][dum1] = sqrt(Gamma * dv[3][i][dum1] / dv[0][i][dum1]);                 //sound speed
@@ -72,10 +74,12 @@ void BC_Eulerwall(int bind, int bnode, int sbind, int ebind, double ***&cv, doub
             if ((rho <= 0) or (rhoe <= 0) or ((fabs(cv[0][dum1][j]) - rho) > maxwchg * cv[0][dum1][j])
                 or ((fabs(cv[3][dum1][j]) - rhoe) > maxwchg * cv[3][dum1][j])) {*/
             dv[0][dum1][j] = dv[0][ins1][j]; //rho
-            dv[1][dum1][j] = -dv[0][ins1][j]; //u
-            dv[2][dum1][j] = dv[0][ins1][j]; //v
+            // dv[0][dum1][j] = 2.0*dv[0][ins1][j] - dv[0][ins2][j]; //rho
+            dv[1][dum1][j] = -dv[1][ins1][j]; //u
+            dv[2][dum1][j] = dv[2][ins1][j]; //v
+            // dv[3][dum1][j] = 0.5*(3.0*dv[3][ins1][j] - dv[3][ins2][j]); //p
             dv[3][dum1][j] = dv[3][ins1][j]; //p
-            dv[4][dum1][j] = dv[3][dum1][j] / (dv[0][dum1][j] * Rgas); //T
+            dv[4][dum1][j] = dv[3][dum1][j] / (dv[0][dum1][j] * Rgas); //T 
             dv[5][dum1][j] = sqrt(Gamma*dv[3][dum1][j]/dv[0][dum1][j]); //a
             if(dimen==0){
                 dv[6][dum1][j] = ((1.0+C1/C0)/(C1/C0+dv[4][dum1][j]))*pow(dv[4][dum1][j],1.5)/Re_inf; //Mu

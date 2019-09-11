@@ -105,6 +105,7 @@ int main(int argc, char** argv) {
         while (time_unstd < tot_time) {
 
             time_unstd = time_unstd + tstep[2][2];
+            
             iter = iter + 1;
             if(iter%disp_freq==0){
                 std::cout << "iter number" << iter << "\t" << "current time=" << tstep[2][2] << "\t" << "total time=" << time_unstd

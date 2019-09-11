@@ -3,7 +3,7 @@
 #input parameters for solving 2D Euler/NS equations on a structured grid        #
 #################################################################################
 #Test case name (this name will be used to write output files)
-FfsEuler
+FfsEulerZB_2o_24080
 #Equations to be solved (Euler=0, for NSE=1)
 0
 #Equations to be solved in dimensional or ND form (ND=0, and Dimensional=1)
@@ -13,13 +13,13 @@ FfsEuler
 #Time stepping scheme to be used (explicit=0, ssprk2=1, ssprk3=2)
 0
 #Insvicid descretization method (see end of the file for description)
-7
+20
 #Spatial accuracy of inviscid scheme (first order=0, second order=1)
-0
+1
 #viscous descritization method (Green Gauss=0, Least square=1, only GG available)
 0
 #cfl number
-0.6
+0.5
 #scaling factor (for appropreate Re)
 0.0381
 #restart solution (no=0, yes=1)
@@ -35,7 +35,7 @@ Something.dat
 #display frequecy. Progress will be written for chosen iterations
 100
 #Output frequency. Output will be written for the chosen freq
-1000
+100
 #Maximum number of iterations
 30000
 #Maximum time at which unsteady computations will be stopped

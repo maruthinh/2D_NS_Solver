@@ -11,6 +11,8 @@ void Solver(int ib, int id1, int id2, int jb, int jd1, int jd2, int nconv, int n
     for (int j = 2; j <= jb; j++) {
         for (int i = 2; i <= ib; i++) {
 
+            if(i>49 && j<18) continue;
+
             cvold[0][i][j] = cv[0][i][j];
             cvold[1][i][j] = cv[1][i][j];
             cvold[2][i][j] = cv[2][i][j];
@@ -40,6 +42,8 @@ void Solver(int ib, int id1, int id2, int jb, int jd1, int jd2, int nconv, int n
             for (int j = 2; j <= jb; j++) {
                 for (int i = 2; i <= ib; i++) {
 
+                    if(i>49 && j<18) continue;
+
                     adtv = tstep[i][j] / area[i][j];
                     rhs[0][i][j] = adtv * rhs[0][i][j];
                     rhs[1][i][j] = adtv * rhs[1][i][j];
@@ -52,6 +56,8 @@ void Solver(int ib, int id1, int id2, int jb, int jd1, int jd2, int nconv, int n
 
             for (int j = 2; j <= jb; j++) {
                 for (int i = 2; i <= ib; i++) {
+
+                    if(i>49 && j<18) continue;
 
                     cv[0][i][j] = cvold[0][i][j] - rhs[0][i][j];
                     cv[1][i][j] = cvold[1][i][j] - rhs[1][i][j];
@@ -83,6 +89,8 @@ void Solver(int ib, int id1, int id2, int jb, int jd1, int jd2, int nconv, int n
                 for (int j = 2; j <= jb; j++) {
                     for (int i = 2; i <= ib; i++) {
                         //std::cout<<"ssprk2="<<i<<"\t"<<j<<"\t"<<k<<"\t"<<ConstSSPRK2a[k]<<"\t"<<ConstSSPRK2b[k]<<std::endl;
+                        if(i>49 && j<18) continue;
+
                         adtv = tstep[i][j] / area[i][j];
                         rhs[0][i][j] = adtv * rhs[0][i][j];
                         rhs[1][i][j] = adtv * rhs[1][i][j];
@@ -95,6 +103,9 @@ void Solver(int ib, int id1, int id2, int jb, int jd1, int jd2, int nconv, int n
 
                 for (int j = 2; j <= jb; j++) {
                     for (int i = 2; i <= ib; i++) {
+
+                        if(i>49 && j<18) continue;
+
                         cv[0][i][j] = ConstSSPRK2a[k] * cvold[0][i][j] + ConstSSPRK2b[k] * (cv[0][i][j] - rhs[0][i][j]);
                         cv[1][i][j] = ConstSSPRK2a[k] * cvold[1][i][j] + ConstSSPRK2b[k] * (cv[1][i][j] - rhs[1][i][j]);
                         cv[2][i][j] = ConstSSPRK2a[k] * cvold[2][i][j] + ConstSSPRK2b[k] * (cv[2][i][j] - rhs[2][i][j]);
@@ -126,6 +137,9 @@ void Solver(int ib, int id1, int id2, int jb, int jd1, int jd2, int nconv, int n
 
                 for (int j = 2; j <= jb; j++) {
                     for (int i = 2; i <= ib; i++) {
+
+                        if(i>49 && j<18) continue;
+
                         adtv = tstep[i][j] / area[i][j];
                         rhs[0][i][j] = adtv * rhs[0][i][j];
                         rhs[1][i][j] = adtv * rhs[1][i][j];
@@ -138,6 +152,9 @@ void Solver(int ib, int id1, int id2, int jb, int jd1, int jd2, int nconv, int n
 
                 for (int j = 2; j <= jb; j++) {
                     for (int i = 2; i <= ib; i++) {
+
+                        if(i>49 && j<18) continue;
+                        
                         cv[0][i][j] = ConstRK1[k] * cvold[0][i][j] + ConstRK2[k] * (cv[0][i][j] - rhs[0][i][j]);
                         cv[1][i][j] = ConstRK1[k] * cvold[1][i][j] + ConstRK2[k] * (cv[1][i][j] - rhs[1][i][j]);
                         cv[2][i][j] = ConstRK1[k] * cvold[2][i][j] + ConstRK2[k] * (cv[2][i][j] - rhs[2][i][j]);
