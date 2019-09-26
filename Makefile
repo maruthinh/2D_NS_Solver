@@ -2,7 +2,7 @@
 CC          := g++
 
 #The Target Binary Program
-TARGET      := 2D_NS_Riemann
+TARGET      := 2D_NS_RiemannMaxLambdaFo
 
 #The Directories, Source, Includes, Objects, Binary and Resources
 SRCDIR      := src

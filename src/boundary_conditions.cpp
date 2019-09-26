@@ -37,8 +37,8 @@ void Boundary_Conditions(int ib, int id1, int id2, int jb, int jd1, int jd2, dou
             Bc_Transmitive(bound_ind[bc], bound_cell[bc], strt_bound_seg[bc], end_bound_seg[bc], cv, dv);
         }
         else if(bc_flag[bc]==30){ //Euler wall boundary condition
-            // BC_wall(bound_ind[bc], bound_cell[bc], strt_bound_seg[bc], end_bound_seg[bc], cv, dv);
-            BC_Eulerwall(bound_ind[bc], bound_cell[bc], strt_bound_seg[bc], end_bound_seg[bc], cv, dv);
+            BC_wall(bound_ind[bc], bound_cell[bc], strt_bound_seg[bc], end_bound_seg[bc], cv, dv);
+            // BC_Eulerwall(bound_ind[bc], bound_cell[bc], strt_bound_seg[bc], end_bound_seg[bc], cv, dv);
         }
         else if(bc_flag[bc]==40){ //navier-stokes wall boundary condition
             //std::cout<<"I am applying b.c 40"<<std::endl;
